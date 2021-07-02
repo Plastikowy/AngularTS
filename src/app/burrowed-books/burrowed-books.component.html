@@ -1,6 +1,9 @@
+<ng-container *ngIf="reader">
+  Borrowed books of {{reader._name + " " + reader._surname}}:
 <ul>
   <li *ngFor="let book of reader.getBorrowedBooks()">
     {{book.title}}
 
   </li>
 </ul>
+</ng-container>
