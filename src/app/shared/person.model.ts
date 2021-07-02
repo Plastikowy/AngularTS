@@ -1,25 +1,26 @@
+import {BookModel} from "./book.model";
+
 export class PersonModel{
-  private _name: string;
-  private _surname: string;
+  public _name: string;
+  public _surname: string;
+  public borrowedBooks: BookModel[] = [];
 
   constructor(name: string, surname: string) {
     this._name = name;
     this._surname = surname;
   }
 
-  get surname(): string {
-    return this._surname;
+  borrowBook(book:BookModel){
+    this.borrowedBooks.push(book);
   }
 
-  set surname(value: string) {
-    this._surname = value;
-  }
-  get name(): string {
-    return this._name;
+  returnBook(book:BookModel){
+    let index = this.borrowedBooks.indexOf(book);
+    this.borrowedBooks.splice(index, 1);
   }
 
-  set name(value: string) {
-    this._name = value;
+  getBorrowedBooks(){
+    return this.borrowedBooks;
   }
 
   GetFullName(){

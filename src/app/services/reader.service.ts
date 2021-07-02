@@ -5,8 +5,12 @@ import {PersonModel} from "../shared/person.model";
 @Injectable({
   providedIn: 'root'
 })
-export class PassReadersService{
+export class ReaderService {
   public readers: PersonModel[] = [];
+
+  constructor() {
+    this.AddRandomReaders();
+  }
 
   addReader(person:PersonModel){
     this.readers.push(person);
@@ -14,5 +18,11 @@ export class PassReadersService{
 
   getReaders(){
     return this.readers;
+  }
+
+  private AddRandomReaders() {
+    this.addReader(new PersonModel("Cezary", "Lapka"));
+    this.addReader(new PersonModel("Tomek", "Samól"));
+    this.addReader(new PersonModel("Leszek", "Placek"));
   }
 }

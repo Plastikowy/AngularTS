@@ -7,12 +7,12 @@ IsBorrowed: {{ book.isBorrowed }}<br>
 <ng-template #thenBlock>
   Who borrowed: {{ book.person.GetFullName() }} <br>
   Due Date: {{book.dueDate.getDay() + "-" + book.dueDate.getMonth() + "-" + book.dueDate.getFullYear() }} <br>
-  <button type="button" class="btn btn-primary" (click)="Return()">Return</button>
+  <button type="button" class="btn btn-primary" (click)="Return(book.person)">Return</button>
 </ng-template>
 <ng-template #elseBlock>
   <ul>
     <li *ngFor="let reader of readers">
-      {{reader.name + " " + reader.surname}}
+      {{reader._name + " " + reader._surname}}
       <button type="button" class="btn btn-primary" (click)="Borrow(reader)">Borrow</button>
     </li>
   </ul>

@@ -1,8 +1,8 @@
 import {Component, Injectable, Input, OnInit} from '@angular/core';
 import {BookModel} from "../shared/book.model";
-import {PassbookService} from "../services/passbook.service";
+import {BookService} from "../services/book.service";
 import {PersonModel} from "../shared/person.model";
-import {PassReadersService} from "../services/passReaders.service";
+import {ReaderService} from "../services/reader.service";
 
 @Component({
   selector: 'app-book-view',
@@ -15,8 +15,8 @@ export class BookViewComponent implements OnInit {
   public readers: PersonModel[] = [];
 
   constructor(
-    private passBookService: PassbookService,
-    private passReadersService: PassReadersService,
+    private passBookService: BookService,
+    private passReadersService: ReaderService,
   ) {
     this.book = this.passBookService.getBook();
     this.readers = this.passReadersService.getReaders();
@@ -26,9 +26,10 @@ export class BookViewComponent implements OnInit {
 
   }
 
-  Return(){
+  Return(person: PersonModel){
     this.book.isBorrowed = false;
     this.book.person = null;
+    person.returnBook(this.book);
   }
 
   Borrow(person: PersonModel){
@@ -36,5 +37,6 @@ export class BookViewComponent implements OnInit {
     this.book.dueDate = new Date(Date.now());
     this.book.dueDate.setMonth(this.book.dueDate.getMonth() + 3);
     this.book.person = person;
+    person.borrowBook(this.book);
   }
 }

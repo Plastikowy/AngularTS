@@ -10,6 +10,7 @@ import { BookViewComponent } from './book-view/book-view.component';
 import { BookListViewComponent } from './book-list-view/book-list-view.component';
 import { CatalogViewComponent } from './catalog-view/catalog-view.component';
 import { BookActionViewComponent } from './book-action-view/book-action-view.component';
+import { BurrowedBooksComponent } from './burrowed-books/burrowed-books.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BookActionViewComponent } from './book-action-view/book-action-view.com
     BookViewComponent,
     BookListViewComponent,
     CatalogViewComponent,
-    BookActionViewComponent
+    BookActionViewComponent,
+    BurrowedBooksComponent
   ],
   imports: [
     BrowserModule,

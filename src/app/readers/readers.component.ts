@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PersonModel} from "../shared/person.model";
-import {PassReadersService} from "../services/passReaders.service";
+import {ReaderService} from "../services/reader.service";
 
 @Component({
   selector: 'app-readers',
@@ -10,14 +10,23 @@ import {PassReadersService} from "../services/passReaders.service";
 export class ReadersComponent implements OnInit {
 
   public readers: PersonModel[] = [];
+  public reader: PersonModel;
+  viewRead: boolean = false;
 
   constructor(
-    private passReadersService: PassReadersService,
+    private passReadersService: ReaderService,
     ) {
     this.readers = this.passReadersService.getReaders();
   }
 
   ngOnInit(): void {
+  }
+
+  setReader(reader: PersonModel){
+    this.reader = reader;
+    console.log(this.viewRead);
+    this.viewRead = true;
+    console.log(this.viewRead);
   }
 
 }

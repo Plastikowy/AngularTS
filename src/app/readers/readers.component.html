@@ -1,1 +1,22 @@
-<p>readers works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3 fill mt-4">
+      <ul>
+        <li *ngFor="let reader of readers">
+          <a (click)="setReader(reader)">{{reader._name + " " + reader._surname}}</a>
+        </li>
+      </ul>
+
+
+    </div>
+  </div>
+</div>
+<div [hidden]="!viewRead">
+  <app-burrowed-books [reader]="reader"></app-burrowed-books>
+</div>
+
+<!--<ul>-->
+<!--  <li *ngFor="let book of reader.getBorrowedBooks()">-->
+<!--    {{book.title}}-->
+<!--  </li>-->
+<!--</ul>-->
