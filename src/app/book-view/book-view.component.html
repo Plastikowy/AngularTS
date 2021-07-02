@@ -1,0 +1,21 @@
+Title: {{ book.title }} <br>
+Author: {{ book.author }}<br>
+ISBN: {{ book.ISBN }}<br>
+IsBorrowed: {{ book.isBorrowed }}<br>
+
+<div *ngIf="book.isBorrowed; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+  Who borrowed: {{ book.person.GetFullName() }} <br>
+  Due Date: {{book.dueDate.getDay() + "-" + book.dueDate.getMonth() + "-" + book.dueDate.getFullYear() }} <br>
+  <button type="button" class="btn btn-primary" (click)="Return()">Return</button>
+</ng-template>
+<ng-template #elseBlock>
+  <ul>
+    <li *ngFor="let reader of readers">
+      {{reader.name + " " + reader.surname}}
+      <button type="button" class="btn btn-primary" (click)="Borrow(reader)">Borrow</button>
+    </li>
+  </ul>
+
+</ng-template>
+

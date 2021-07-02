@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3 fill mt-4">
+      <ul>
+        <li *ngFor="let book of books">
+          <a (click)="ShowBook(book)">{{book.title}}</a>
+        </li>
+      </ul>
+<!--      <a (click)="PrepareGame(game.getGame())"><img [src]="game.getPicture()" alt="{{game.getName()}}"></a>-->
+
+
+    </div>
+  </div>
+</div>
+<!--<app-book-view [book]="book_toDisplay"></app-book-view>-->
