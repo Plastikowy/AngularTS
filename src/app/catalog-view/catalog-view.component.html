@@ -1,1 +1,24 @@
-<p>catalog-view works!</p>
+Search by title:
+<form>
+  <mat-form-field>
+    <input type="text" matInput [matAutocomplete]="auto" [formControl]="myControl"/>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let book of books " [value]="book.title">
+          {{book.title}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+Search by author:
+<form>
+  <mat-form-field>
+    <input type="text" matInput [matAutocomplete]="auto2"/>
+    <mat-autocomplete #auto2="matAutocomplete">
+      <mat-option *ngFor="let book of books" [value]="book.author">
+        {{book.author}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+List of books that matches:

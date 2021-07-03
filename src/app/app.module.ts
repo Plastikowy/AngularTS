@@ -11,22 +11,31 @@ import { BookListViewComponent } from './book-list-view/book-list-view.component
 import { CatalogViewComponent } from './catalog-view/catalog-view.component';
 import { BookActionViewComponent } from './book-action-view/book-action-view.component';
 import { BurrowedBooksComponent } from './burrowed-books/burrowed-books.component';
+import { ReactiveFormsModule } from "@angular/forms";
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MaterialModule} from "./material.module";
+import {PurposeButtonComponent} from "./interactiveComponents/purpose-button/purpose-button.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TopbarComponent,
-    FooterComponent,
-    ReadersComponent,
-    BookViewComponent,
-    BookListViewComponent,
-    CatalogViewComponent,
-    BookActionViewComponent,
-    BurrowedBooksComponent
-  ],
+    declarations: [
+        AppComponent,
+        TopbarComponent,
+        FooterComponent,
+        ReadersComponent,
+        BookViewComponent,
+        BookListViewComponent,
+        CatalogViewComponent,
+        BookActionViewComponent,
+        BurrowedBooksComponent,
+        PurposeButtonComponent,
+
+    ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    NoopAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

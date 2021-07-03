@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {BookService} from "../services/book.service";
+import {BookModel} from "../shared/book.model";
+import {FormControl} from "@angular/forms";
+import {Observable} from "rxjs";
+import {startWith, map} from "rxjs/operators";
 
 @Component({
   selector: 'app-catalog-view',
@@ -7,9 +12,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CatalogViewComponent implements OnInit {
 
-  constructor() { }
+  books: BookModel[] = [];
+  myControl = new FormControl();
+filteredOptions: Observable<BookModel[]>;
 
-  ngOnInit(): void {
+  constructor(
+    private BookService: BookService,
+  ) {
+    this.books = this.BookService.getAllBooks();
   }
 
+  ngOnInit(){
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value)))
+  }
+
+  private _filter(value: string): BookModel[]{
+    const filterValue = value;
+    console.log("XXXXXXXXXXXXX:" + filterValue);
+    return this.books.filter(book => book.title.includes(filterValue));
+  }
 }

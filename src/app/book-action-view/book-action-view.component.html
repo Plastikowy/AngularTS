@@ -1,1 +1,25 @@
-<p>book-action-view works!</p>
+<div [hidden]="hasChosenAction">
+<purpose-button [label]="'Edit'" [onClick]="startEditing"></purpose-button>
+<purpose-button [label]="'Add'" [onClick]="startAdding"></purpose-button>
+</div>
+
+  <div *ngIf="isEditing; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+    <input type="text" label="Title" (focusout)="setTitle($event)" placeholder="Title"> <br>
+    <input type="text" label="Author" (focusout)="setAuthor($event)" placeholder="Author"> <br>
+    <input type="number" label="ISBN" (focusout)="setISBN($event)" placeholder="ISBN"> <br>
+    <purpose-button [label]="'Accept'" [onClick]="EditCurrentBook"></purpose-button>
+  </ng-template>
+  <ng-template #elseBlock>
+    <div *ngIf="isAdding">
+      <input type="text" label="Title" (focusout)="setTitle($event)" placeholder="Title"> <br>
+      <input type="text" label="Author" (focusout)="setAuthor($event)" placeholder="Author"> <br>
+      <input type="number" label="ISBN" (focusout)="setISBN($event)" placeholder="ISBN"> <br>
+      <purpose-button [label]="'Accept'" [onClick]="AddNewBook"></purpose-button>
+    </div>
+  </ng-template>
+
+<div [hidden]="!showResult">
+Was operation successful: {{success}} <br>
+  Additional information: <br> {{info}}
+</div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PersonModel} from "../shared/person.model";
 import {ReaderService} from "../services/reader.service";
 
+
 @Component({
   selector: 'app-readers',
   templateUrl: './readers.component.html',
@@ -24,9 +25,7 @@ export class ReadersComponent implements OnInit {
 
   setReader(reader: PersonModel){
     this.reader = reader;
-    console.log(this.viewRead);
     this.viewRead = true;
-    console.log(this.viewRead);
   }
 
 }
